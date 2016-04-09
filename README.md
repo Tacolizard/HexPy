@@ -26,10 +26,9 @@ This code was made on a mac!(for Python programming, linux > mac > windows imo).
 #4. How to Make Images/Program Description
 This program is designed to open files containing python scripts that look like this:
 
-set width of image
+(This won't render, it's for error testing)
+
 w = 5
-this image is for error testing, it shouldn’t render
-set color values
 pix = ["#004356","#004356","#004356","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff”]
 
 The program reads through a list of hex values and draws them left to right, line by line. It ends the line and goes to the next when it detects that it has drawn the number of pixels specified with the variable w, which means width. If w=5, each line is drawn 5 pixels long. This method avoids assigning coordinates to the hex values. As of right now, the first version, it cannot render rectangles. It can only render 1:1 squares. Because of this, you must make sure that your image is 1:1, or it will not render. To do this, you must have a list of hex values with a len(pix) length that when divided by w, equals w. Or more simply:
