@@ -2,6 +2,7 @@
 Pygraphics is a family of tools to work with color hexcodes. The main tool, pgexec, is a simple command line script to output arrays of color hexcodes as images. Written in Python.
 
 Also, this version of the readme isn't formatted very well, I reccomend downloading the readme from the pgexec folder
+I should also warn you that images can take some time to open. Python is an interpreted language, and that combined with tkinter, a gui-focused library, mean it's pretty slow compared to conventional systems. It takes about 10 seconds to open a 1000 px by 1000 px lossless image.
 
 
 
