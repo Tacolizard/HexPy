@@ -129,3 +129,5 @@ print("Total # of pixels drawn:",w*w)
 print("Image size:",os.path.getsize(args[0]),"bytes")
 
 mainloop()
+
+#small loan of a million hidden memes army represent!!!
