@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 import random
+import os
 #made in 5 minutes, not that great
 #not really an official tool, just an easy script for generating test images
 
 
 r = lambda: random.randint(0,255)
 rclr='#%02X%02X%02X' % (r(),r(),r())
-print(rclr)
 
-file = open("randomimg.pgf","r+")
+
+os.system('clear')#change if incompatible with your system
+
+inf = input('Where to save image?(relative)')
+
+file = open(inf,"w+")
 f=file.read()
 exec(f)
 line=0
