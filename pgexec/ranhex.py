@@ -34,7 +34,7 @@ while line < 1000 * 1000:#put the dimensions of the desired output image, this d
   #  clr=next(ipix)
    # step=step+1
 
-with open("randomimg.pgf", 'r+') as file:#you must have already created the file, make sure it's empty
+with open(inf, 'w+') as file:#you must have already created the file, make sure it's empty
     for item in pix:#it should be a plaintext document, that's the fastest to edit. of course change extension to .pgf
         file.write('"{}",'.format(item))#after it's finished writing, you have to open the file and add the list brackets "[]" like:
         #pix=[whatever was generated]. also, above pix, add w=x. x is whatever dimensions you chose. if you chose 1000 * 1000,
