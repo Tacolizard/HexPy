@@ -23,7 +23,7 @@ while line < 1000 * 1000:#put the dimensions of the desired output image, this d
     rclr='#%02X%02X%02X' % (r(),r(),r())
     print(rclr)
     line=line+1
-  
+
 #while step < len(pix):
  #   file.write(clr)
   #  clr=next(ipix)
