@@ -10,7 +10,6 @@
 #surprisingly, .pgf is about as efficient as an uncompressed jpeg image.
 #also, I will potentially make an image compressor for .pgf
 
-#and yeah, the errors were made in like 2 seconds
 
 from tkinter import *
 import sys
@@ -61,7 +60,7 @@ except SyntaxError:
     except IndexError:
         quit()
     quit()
-    
+
 
 #start tkinter;main part of the program
 master = Tk()
@@ -96,22 +95,22 @@ def drawline(x,y,steps,clr,pix,ipix,w):
             except IndexError:
                 quit()
             quit()
-            
+
 #move the line being drawn 1 pixel down, after the previous line is complete
 while line < dpl:
     drawline(x,y,steps,clr,pix,ipix,w)#draw line with the new vars
-    
+
     #refresh vars for next line and clear terminal
     line = line + 1
     y=y+1#this is the var that actually moves the line. all others are display and stuff
     steps=0
     os.system("clear")
-    
+
     #give progress and size info
     print("Drawing from array...")
     print("Progress:",line,"/",w)
     print("Image size:",os.path.getsize(args[0]),"bytes")
-    if line > w:#invalidate file if it dosen't fit .pgf format. won't cause a python error, 
+    if line > w:#invalidate file if it dosen't fit .pgf format. won't cause a python error,
         os.system('clear')#but will mess up stats and won't render correctly
         print("PGexec Error 23;invalid image file: \nimage is not square")
         try:
