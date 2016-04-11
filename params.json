@@ -1,6 +1,6 @@
 {
   "name": "HexPy",
-  "tagline": "Powerful Graphics. Extremely lightweight. Pure Python 3.",
-  "body": "#HexPy, technically, is a family of tools for creating, modifying, and displaying 8-byte color hexcodes. \r\n##_Non-technically, it's friggin awesome._\r\n\r\n\r\n\r\n####Currently HexPy is in Beta, accessible from a CLI only. Full code library coming soon.\r\n\r\n###Installation is easy:\r\n1. Have Python 3 installed.\r\n2. Download the zip from Github\r\n3. Add pgexec to your PATH\r\n4. Done!\r\n\r\n###To test the script:\r\n1. Run the ranhex.py script to generate a test image.\r\n2. From a terminal do `pgexec image.pgf`\r\n(You can also add a 'v' at the end if you want to see verbose error reports.)\r\n\r\n\r\n###For more info, see the HexPy github repo. Link above.",
+  "tagline": "Powerful graphics, yet extremely lightweight. Pure Python 3.",
+  "body": "#HexPy, technically, is a family of tools for creating, modifying, and displaying 8-byte color hexcodes. \r\n##_Non-technically, it's friggin awesome._\r\n\r\n\r\n\r\n####Currently HexPy is in Beta, accessible from a CLI only. Full code library coming soon.\r\n\r\n###Installation is easy:\r\n1. Have Python 3 installed.\r\n2. Download the zip from Github\r\n3. Add pgexec to your PATH\r\n4. Done!\r\n\r\n###To test HexPy:\r\n1. Run the ranhex.py script to generate a test image.\r\n2. From a terminal do `pgexec image.pgf`\r\n(You can also add a 'v' at the end if you want to see verbose error reports.)\r\n\r\n\r\n###For more info, see the HexPy github repo. There's a link over there on the left.",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
