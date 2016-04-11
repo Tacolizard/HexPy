@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 
-#Pygraphics image processor, a simple way to open images in the .pgf format
-#basically opens arrays of color hex values, and draws them by guessing dimensions
+#██╗  ██╗███████╗██╗  ██╗██████╗ ██╗   ██╗     ██████╗  ██████╗ ███████╗██╗  ██╗███████╗ ██████╗
+#██║  ██║██╔════╝╚██╗██╔╝██╔══██╗╚██╗ ██╔╝     ██╔══██╗██╔════╝ ██╔════╝╚██╗██╔╝██╔════╝██╔════╝
+#███████║█████╗   ╚███╔╝ ██████╔╝ ╚████╔╝█████╗██████╔╝██║  ███╗█████╗   ╚███╔╝ █████╗  ██║
+#██╔══██║██╔══╝   ██╔██╗ ██╔═══╝   ╚██╔╝ ╚════╝██╔═══╝ ██║   ██║██╔══╝   ██╔██╗ ██╔══╝  ██║
+#██║  ██║███████╗██╔╝ ██╗██║        ██║        ██║     ╚██████╔╝███████╗██╔╝ ██╗███████╗╚██████╗
+#╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝        ╚═╝        ╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝
+#Beta version
+#args: path, v, c
+###############################################################################
 
-#only works with square images. If you want anything else, like rectangular or anything irregular,
-#you must add a square of alpha transparancy (or any color) around the image as a background.
-#for this reason and others, I'm working on an image converter
 
-#surprisingly, .pgf is about as efficient as an uncompressed jpeg image.
-#also, I will potentially make an image compressor for .pgf
-
-#and yeah, the errors were made in like 2 seconds
 
 from tkinter import *
 import sys
@@ -20,8 +20,7 @@ sys.argv
 
 #cleanup sys args from command line
 args = sys.argv
-args.remove("/usr/bin/pgexec")#change this if your script/path is in a different location. Also I don't know
-#if this is required on Linux or Windows
+args.remove(args[0])#remove script path from sys args
 
 
 #attempt to open file
