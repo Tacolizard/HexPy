@@ -1,7 +1,7 @@
 #.pgf image example
 import math
 #set width of image
-w = 5
+w = 100
 #this image is for error testing, it won't render
 #set color values
 pix = ["#004356","#004356","#004356","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff",
