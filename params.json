@@ -1,6 +1,6 @@
 {
   "name": "HexPy",
   "tagline": "The most powerful Python graphics library. Pure Python 3. No dependencies. ",
-  "body": "HexPy is a lightweight family of tools for creating, modifying, and displaying 8-byte color hexcodes. By using arrays of colorhexes to output graphics, a programmer has simple yet powerful access to the exact pixels being displayed on the screen.\r\n\r\nCurrently HexPy is in Beta.\r\n\r\nFor more info, see the HexPy github repo. Link above.",
+  "body": "HexPy is a lightweight family of tools for creating, modifying, and displaying 8-byte color hexcodes. By using arrays of colorhexes to output graphics, a programmer has simple yet powerful access to the exact pixels being displayed onscreen.\r\n\r\nCurrently HexPy is in Beta.\r\n\r\nFor more info, see the HexPy github repo. Link above.",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
