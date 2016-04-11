@@ -3,14 +3,10 @@
 #Pygraphics image processor, a simple way to open images in the .pgf format
 #basically opens arrays of color hex values, and draws them by guessing dimensions
 
-#only works with square images. If you want anything else, like rectangular or anything irregular,
-#you must add a square of alpha transparancy (or any color) around the image as a background.
-#for this reason and others, I'm working on an image converter
-
 #surprisingly, .pgf is about as efficient as an uncompressed jpeg image.
 #also, I will potentially make an image compressor for .pgf
 
-#and yeah, the errors were made in like 2 seconds
+#args: path, v, c
 
 from tkinter import *
 import sys
