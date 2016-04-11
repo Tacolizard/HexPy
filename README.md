@@ -22,5 +22,3 @@ This code was made on a mac!(for Python programming, linux > mac > windows imo).
 
 #6. Extras
 The code is heavily commented if you want to read through it. It’s a really simple and probably poorly written program :P. I tried to do my best to explain everything, though there’s not a whole lot of code to explain, and anyone even slightly above my skill level (probably 99% of Python users) should understand. Also, I threw in an extra crappy chef surprise in the form of ranhenx.py. It’s a poorly made script for generating hex values to put in my ‘.pgf’ format, to be read by pgexec. 
-
-#7. The /#1 Rule! Don't put hidden memes in the code!
