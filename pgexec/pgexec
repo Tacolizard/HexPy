@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
-#Pygraphics image processor, a simple way to open images in the .pgf format
-#basically opens arrays of color hex values, and draws them by guessing dimensions
+#██╗  ██╗███████╗██╗  ██╗██████╗ ██╗   ██╗     ██████╗  ██████╗ ███████╗██╗  ██╗███████╗ ██████╗
+#██║  ██║██╔════╝╚██╗██╔╝██╔══██╗╚██╗ ██╔╝     ██╔══██╗██╔════╝ ██╔════╝╚██╗██╔╝██╔════╝██╔════╝
+#███████║█████╗   ╚███╔╝ ██████╔╝ ╚████╔╝█████╗██████╔╝██║  ███╗█████╗   ╚███╔╝ █████╗  ██║
+#██╔══██║██╔══╝   ██╔██╗ ██╔═══╝   ╚██╔╝ ╚════╝██╔═══╝ ██║   ██║██╔══╝   ██╔██╗ ██╔══╝  ██║
+#██║  ██║███████╗██╔╝ ██╗██║        ██║        ██║     ╚██████╔╝███████╗██╔╝ ██╗███████╗╚██████╗
+#╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝        ╚═╝        ╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝
+#Beta version
+#args: path, v, c
+###############################################################################
 
-#only works with square images. If you want anything else, like rectangular or anything irregular,
-#you must add a square of alpha transparancy (or any color) around the image as a background.
-#for this reason and others, I'm working on an image converter
-
-#surprisingly, .pgf is about as efficient as an uncompressed jpeg image.
-#also, I will potentially make an image compressor for .pgf
 
 
 from tkinter import *
@@ -19,8 +20,8 @@ sys.argv
 
 #cleanup sys args from command line
 args = sys.argv
-args.remove("/usr/bin/pgexec")#change this if your script/path is in a different location. Also I don't know
-#if this is required on Linux or Windows
+args.remove(args[0])#remove script path from sys args
+
 
 #attempt to open file
 try:
@@ -88,7 +89,7 @@ def drawline(x,y,steps,clr,pix,ipix,w):
             clr=next(ipix)
         except StopIteration:#if the image is nonsquare, the iterator runs out of values and errors
             os.system('clear')
-            print("PGexec Error 21;invalid image file: \ntotal number of pixels can't be evenly divided by image width")
+            print("PGexec Error 21;invalid image file: \ndimesions given would describe an image with pixel height less than 1")
             try:
                 if args[1]=="v":
                     raise
@@ -108,8 +109,9 @@ while line < dpl:
 
     #give progress and size info
     print("Drawing from array...")
-    print("Progress:",line,"/",w)
+    print("Progress:",line,"/",dpl)
     print("Image size:",os.path.getsize(args[0]),"bytes")
+    '''
     if line > w:#invalidate file if it dosen't fit .pgf format. won't cause a python error,
         os.system('clear')#but will mess up stats and won't render correctly
         print("PGexec Error 23;invalid image file: \nimage is not square")
@@ -119,14 +121,13 @@ while line < dpl:
         except IndexError:
             quit()
         quit()
+        '''
 
 #when finished drawing, show some stats while tk loads
 os.system('clear')
 print("Finished! Wait for tk to load.")
 print('Dimensions:',w,'x',line)
-print("Total # of pixels drawn:",w*w)
+print("Total # of pixels drawn:",w*line)
 print("Image size:",os.path.getsize(args[0]),"bytes")
 
 mainloop()
-
-#small loan of a million hidden memes army represent!!!

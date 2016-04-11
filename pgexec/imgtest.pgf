@@ -2,7 +2,16 @@
 import math
 #set width of image
 w = 100
+
+#this is a test for rectangular images
+#it's supposed to be a simple repetitive pattern
+#right now, the less width an image has, the slower it loads
+#i think it happens because the code to move the drawline is slow
+
+
+
 #this image is for error testing, it won't render
+
 #set color values
 pix = ["#004356","#004356","#004356","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff",
        "#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff","#000000","#000000","#ffffff","#000000","#ffffff",
