@@ -14,6 +14,7 @@ from tkinter import *
 import sys
 import os
 import time
+import platform
 
 start = time.time()#start timer for debugging performance
 #####################################
@@ -27,12 +28,17 @@ print('Loading...')
 
 #Function Declarations. Beware, pretty long
 ################################################################################
+def clear():
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
 
 #attempt to open file/deal with cmds.
 try:
     file = open(args[0])
 except FileNotFoundError:
-    os.system('clear')
+    clear()
     print('PGexec Error 10;file not found: \nNo such file or directory','["',args[0],'"]')
     try:
         if args[1]=="v":
@@ -41,7 +47,7 @@ except FileNotFoundError:
         quit()
     quit()
 except IndexError:
-    os.system('clear')
+    clear()
     print("PGexec Error 30;no command given: \nYou must use a command. \nSyntax, type without quotes: \npgexec 'relative directory of .pgf file' 'v'(optional error verbosity)")
     quit()
 #attempt to read files
@@ -49,7 +55,7 @@ try:
     f = file.read()
     exec(f) #what actually 'reads the vars'
 except UnicodeDecodeError:
-    os.system('clear')
+    clear()
     print("PGexec Error 20;invalid image file: \nimage is not decodeable by UTF-8\nplease use images in .pgf format only")
     try:
         if args[1]=="v":
@@ -58,7 +64,7 @@ except UnicodeDecodeError:
         quit()
     quit()
 except SyntaxError:
-    os.system('clear')
+    clear()
     print("PGexec Error 22;invalid image file: \ninvalid Python syntax\nplease use images in .pgf format only")
     try:
         if args[1]=="v":
@@ -70,7 +76,7 @@ except SyntaxError:
 def vout():#live draw count and stats for 'v'
     try:
         if args[1]=='v':
-            os.system("clear")
+            clear()
 
             #give progress and size info
             print("Drawing from array...")
@@ -108,7 +114,7 @@ def drawline(x,y,steps,clr,pix,ipix,w):
             steps=steps+1#used to keep track of when to end the line
             clr=next(ipix)
         except StopIteration:#if the image is nonsquare, the iterator runs out of values and errors
-            os.system('clear')
+            clear()
             print("PGexec Error 21;invalid image file: \ndimesions given would describe an image with pixel height less than 1")
             try:
                 if args[1]=="v":
@@ -130,7 +136,7 @@ while line < dpl:
 
 
 #when finished drawing, show some stats while tk loads
-os.system('clear')
+clear()
 print("Finished! Wait for tk to load.")
 print('Dimensions:',w,'x',line)
 print("Total # of pixels drawn:",w*line)
