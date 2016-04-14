@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>HexPy</h1>
-        <p>Powerful graphics, yet extremely lightweight. Pure Python 3.</p>
+        <p>Powerful graphics, zero dependencies. Pure Python 3.</p>
 
         <p class="view"><a href="https://github.com/Tacolizard/HexPy">View the Project on GitHub <small>Tacolizard/HexPy</small></a></p>
 
@@ -38,23 +38,30 @@
 <h4>
 <a id="currently-hexpy-is-in-beta-accessible-from-a-cli-only-full-code-library-coming-soon" class="anchor" href="#currently-hexpy-is-in-beta-accessible-from-a-cli-only-full-code-library-coming-soon" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Currently HexPy is in Beta, accessible from a CLI only. Full code library coming soon.</h4>
 
+<h4>
+<a id="this-tutorial-assumes-you-are-familiar-with-a-unix-based-cli-and-python" class="anchor" href="#this-tutorial-assumes-you-are-familiar-with-a-unix-based-cli-and-python" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This tutorial assumes you are familiar with a UNIX-based CLI and Python</h4>
+
 <h3>
 <a id="installation-is-easy" class="anchor" href="#installation-is-easy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation is easy:</h3>
 
 <ol>
-<li>Have Python 3 installed.</li>
-<li>Download and decompress the zip or tar from Github</li>
-<li>cd to the uncompressed directory</li>
+<li>Have Python 3.4 or later installed. 
+<strong>Note: on most Linux distros, you must install <code>python3-tk</code> as well</strong>
+</li>
+<li>Download and decompress the <code>.zip</code> or <code>.tar</code> from Github</li>
+<li>
+<code>cd</code> to the uncompressed directory</li>
 <li>Do <code>chmod 777 pgexec</code>
 </li>
-<li>Either add it to your PATH or run it with ./pgexec</li>
+<li>Either add it to your PATH or run it with <code>./pgexec</code>
+</li>
 </ol>
 
 <h3>
 <a id="to-test-hexpy" class="anchor" href="#to-test-hexpy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To test HexPy:</h3>
 
 <ol>
-<li>Run the ranhex.py script to generate a test image.</li>
+<li>Run the <code>ranhex.py</code> script to generate a test image.</li>
 <li>From a terminal do <code>pgexec imgtest.pgf</code>
 (You can also add a <code>v</code> at the end if you want to see verbose error reports.)</li>
 </ol>
