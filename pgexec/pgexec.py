@@ -10,16 +10,11 @@
 #args: path, v, c
 ###############################################################################
 
+from tkinter import *
 import sys
 import os
 import time
 import platform
-
-try:
-    from tkinter import *
-except ImportError:
-    print('Missing tkinter, downloading...')
-    os.system('sudo apt-get install python3-tk')
 
 start = time.time()#start timer for debugging performance
 #####################################
