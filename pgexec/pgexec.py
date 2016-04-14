@@ -10,20 +10,25 @@
 #args: path, v, c
 ###############################################################################
 
-
-
 from tkinter import *
 import sys
 import os
+import time
 
+start = time.time()#start timer for debugging performance
+#####################################
 sys.argv
-
 #cleanup sys args from command line
 args = sys.argv
 args.remove(args[0])#remove script path from sys args
+print('Loading...')
+#####################################
 
 
-#attempt to open file
+#Function Declarations. Beware, pretty long
+################################################################################
+
+#attempt to open file/deal with cmds.
 try:
     file = open(args[0])
 except FileNotFoundError:
@@ -39,10 +44,10 @@ except IndexError:
     os.system('clear')
     print("PGexec Error 30;no command given: \nYou must use a command. \nSyntax, type without quotes: \npgexec 'relative directory of .pgf file' 'v'(optional error verbosity)")
     quit()
-#attempt to read file
+#attempt to read files
 try:
     f = file.read()
-    exec(f)
+    exec(f) #what actually 'reads the vars'
 except UnicodeDecodeError:
     os.system('clear')
     print("PGexec Error 20;invalid image file: \nimage is not decodeable by UTF-8\nplease use images in .pgf format only")
@@ -62,16 +67,31 @@ except SyntaxError:
         quit()
     quit()
 
+def vout():#live draw count and stats for 'v'
+    try:
+        if args[1]=='v':
+            os.system("clear")
 
-#start tkinter;main part of the program
+            #give progress and size info
+            print("Drawing from array...")
+            print("Progress:",line,"/",dpl)
+            print("Image size:",os.path.getsize(args[0]),"bytes")
+    except IndexError:
+        pass
+
+################################################################################
+
+#Draw pixels, define placement and counter vars.
+#Also output stats and launch tk
+
 master = Tk()
 
 c = Canvas(master, width=w, height=len(pix) / w)
 c.pack()
 
 #define draw placement variables, set up hex array to be accessed
-x=2
-y=2
+x=0
+y=0
 steps = 0
 clr=pix[0]
 ipix=iter(pix)
@@ -105,23 +125,9 @@ while line < dpl:
     line = line + 1
     y=y+1#this is the var that actually moves the line. all others are display and stuff
     steps=0
-    os.system("clear")
+    if len(args) > 0:
+        vout()
 
-    #give progress and size info
-    print("Drawing from array...")
-    print("Progress:",line,"/",dpl)
-    print("Image size:",os.path.getsize(args[0]),"bytes")
-    '''
-    if line > w:#invalidate file if it dosen't fit .pgf format. won't cause a python error,
-        os.system('clear')#but will mess up stats and won't render correctly
-        print("PGexec Error 23;invalid image file: \nimage is not square")
-        try:
-            if args[1]=="v":
-                print("Not a Python error")
-        except IndexError:
-            quit()
-        quit()
-        '''
 
 #when finished drawing, show some stats while tk loads
 os.system('clear')
@@ -129,5 +135,8 @@ print("Finished! Wait for tk to load.")
 print('Dimensions:',w,'x',line)
 print("Total # of pixels drawn:",w*line)
 print("Image size:",os.path.getsize(args[0]),"bytes")
+end = time.time()
+time = end - start
+print('Time:',time,'seconds')
 
 mainloop()
