@@ -118,7 +118,7 @@ dpl = pl / w
 def drawline(x,y,steps,clr,pix,ipix,w):
     while steps < w:#check if the line is done drawing
         try:
-            c.create_line(x, y, x+1, y, fill=clr, width=1)
+            c.create_line(x, y, x, y, fill=clr, width=1)
             x=x+1
             steps=steps+1#used to keep track of when to end the line
             clr=next(ipix)
