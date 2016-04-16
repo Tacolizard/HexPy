@@ -124,7 +124,7 @@ def drawline(x,y,steps,clr,pix,ipix,w):
             clr=next(ipix)
         except StopIteration:#if the image is nonsquare, the iterator runs out of values and errors
             clear()
-            print("PGexec Error 21;invalid image file: \ndimesions given would describe an image with pixel height less than 1")
+            print("PGexec Error 21;invalid image file: \nNumber of values can't be evenly divided by width")
             try:
                 if args[1]=="v":
                     raise
