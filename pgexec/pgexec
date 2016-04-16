@@ -159,24 +159,51 @@ url = 'http://tacolizard.github.io/HexPy/'
 cmdv='python3 pgexec '+args[0]+' v'
 cmd='python3 pgexec '+args[0]
 
+
 def OpenUrl(url):
     webbrowser.open_new(url)
 def verb():
     os.system(cmdv)
-    quit()
 def nverb():
     os.system(cmd)
-    quit()
-    
+def close():
+    c.delete('all')
+def opn():
+
+    def runf():
+        openf='python3 pgexec '+filen.get()
+        os.system(openf)
+
+    top = Toplevel()
+    top.minsize(width=100,height=100)
+    top.wm_title('Open file')
+    msg = Message(top,text='Enter file:')
+    msg.pack()
+
+    filen = Entry(top)
+    filen.pack()
+
+    btn = Button(top,text='Enter',command=runf)
+    btn.pack()
+
+
+
+
+
 menubar = Menu(master)
 submenu = Menu(menubar)
-reopnmenu = Menu(submenu)
+filemenu = Menu(master)
+reopnmenu = Menu(filemenu)
 reopnmenu.add_command(label='Verbosity', command=verb)
 reopnmenu.add_command(label='Non-Verbosity', command=nverb)
 submenu.add_command(label='Visit Website', command=lambda aurl=url:OpenUrl(aurl))
+filemenu.add_cascade(label='Reopen With...', menu=reopnmenu)
+filemenu.add_command(label='Open',command=opn)
+
 submenu.add_command(label='Exit',command=master.quit)
-submenu.add_cascade(label='Reopen With...', menu=reopnmenu)
-menubar.add_cascade(label='Menu', menu=submenu)
+filemenu.add_command(label='Close File',command=close)
+menubar.add_cascade(label='pgexec', menu=submenu)
+menubar.add_cascade(label='File',menu=filemenu)
 
 master.minsize(width=200,height=150)
 master.resizable(width=FALSE,height=FALSE)
