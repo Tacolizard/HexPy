@@ -39,76 +39,41 @@ except ImportError:
     print('Missing tkinter, downloading...')
     os.system('sudo apt-get install python3-tk')
 
-start = time.time()#start timer for debugging performance
+
+
+################################################################################
+
+
 #####################################
-sys.argv
-#cleanup sys args from command line
-args = sys.argv
-args.remove(args[0])#remove script path from sys args
-print('Loading...')
+def trun():
+    global tfile
+    tfile = tfilen.get()
+    tp.quit()
+    tf=open(tfile)
+    global texec
+    texec = tf.read()
+tp = Tk()
+tp.minsize(width=100,height=70)
+tp.wm_title('Open file')
+tmsg = Message(tp,text='Enter file:')
+tmsg.pack()
+
+tfilen = Entry(tp)
+tfilen.pack()
+
+tbtn = Button(tp,text='Enter',command=trun)
+tbtn.pack()
+
+tp.mainloop()
 #####################################
 
 
 #Function Declarations. Beware, pretty long
 ################################################################################
-
-
-#attempt to open file/deal with cmds.
-try:
-    file = open(args[0])
-except FileNotFoundError:
-    clear()
-    print('PGexec Error 10;file not found: \nNo such file or directory','["',args[0],'"]')
-    try:
-        if args[1]=="v":
-            raise
-    except IndexError:
-        quit()
-    quit()
-except IndexError:
-    clear()
-    print("PGexec Error 30;no command given: \nYou must use a command. \nSyntax, type without quotes: \npgexec 'relative directory of .pgf file' 'v'(optional error verbosity)")
-    quit()
-#attempt to read files
-try:
-    f = file.read()
-    exec(f) #what actually 'reads the vars'
-except UnicodeDecodeError:
-    clear()
-    print("PGexec Error 20;invalid image file: \nimage is not decodeable by UTF-8\nplease use images in .pgf format only")
-    try:
-        if args[1]=="v":
-            raise
-    except IndexError:
-        quit()
-    quit()
-except SyntaxError:
-    clear()
-    print("PGexec Error 22;invalid image file: \ninvalid Python syntax\nplease use images in .pgf format only")
-    try:
-        if args[1]=="v":
-            raise
-    except IndexError:
-        quit()
-    quit()
-
-def vout():#live draw count and stats for 'v'
-    try:
-        if args[1]=='v':
-            clear()
-
-            #give progress and size info
-            print("Drawing from array...")
-            print("Progress:",line,"/",dpl)
-            print("Image size:",os.path.getsize(args[0]),"bytes")
-    except IndexError:
-        pass
-
-################################################################################
-
+exec(texec)
 #Draw pixels, define placement and counter vars.
 #Also output stats and launch tk
-
+start = time.time()#start timer for debugging performance
 master = Tk()
 
 c = Canvas(master, width=w, height=len(pix) / w)
@@ -150,8 +115,8 @@ while line < dpl:
     line = line + 1
     y=y+1#this is the var that actually moves the line. all others are display and stuff
     steps=0
-    if len(args) > 0:
-        vout()
+    #if len(args) > 0:
+    #    vout()
 
 
 #when finished drawing, show some stats while tk loads
@@ -159,15 +124,15 @@ clear()
 print("Finished! Wait for tk to load.")
 print('Dimensions:',w,'x',line)
 print("Total # of pixels drawn:",w*line)
-print("Image size:",os.path.getsize(args[0]),"bytes")
+#print("Image size:",os.path.getsize(tfile),"bytes")
 end = time.time()
 time = end - start
 print('Time:',time,'seconds')
 
 url = 'http://tacolizard.github.io/HexPy/'
 
-cmdv='python3 pgexec '+args[0]+' v'
-cmd='python3 pgexec '+args[0]
+#cmdv='python3 pgexec '+args[0]+' v'
+#cmd='python3 pgexec '+args[0]
 
 #welcome to the land of shoddy tkinter code
 #it really sucks, but I hate using classes
@@ -198,21 +163,18 @@ def opn():
     btn.pack()
 
 
-def saps():
-    print('Not yet implemented')
+
+
 
 menubar = Menu(master)
 submenu = Menu(menubar)
 filemenu = Menu(master)
 reopnmenu = Menu(filemenu)
-samenu = Menu(filemenu)
 reopnmenu.add_command(label='Verbosity', command=verb)
 reopnmenu.add_command(label='Non-Verbosity', command=nverb)
 submenu.add_command(label='Visit Website', command=lambda aurl=url:OpenUrl(aurl))
 filemenu.add_cascade(label='Reopen With...', menu=reopnmenu)
 filemenu.add_command(label='Open',command=opn)
-samenu.add_command(label='Postscript | .ps',command=saps)
-filemenu.add_cascade(label='Export As',menu=samenu)
 
 submenu.add_command(label='Exit',command=master.quit)
 filemenu.add_command(label='Close File',command=close)
@@ -221,7 +183,7 @@ menubar.add_cascade(label='File',menu=filemenu)
 
 master.minsize(width=200,height=150)
 master.resizable(width=FALSE,height=FALSE)
-master.wm_title(args[0])
+master.wm_title(tfile)
 master.config(menu=menubar)
 
 
