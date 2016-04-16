@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#encoding=utf-8
 
 #██╗  ██╗███████╗██╗  ██╗██████╗ ██╗   ██╗     ██████╗  ██████╗ ███████╗██╗  ██╗███████╗ ██████╗
 #██║  ██║██╔════╝╚██╗██╔╝██╔══██╗╚██╗ ██╔╝     ██╔══██╗██╔════╝ ██╔════╝╚██╗██╔╝██╔════╝██╔════╝
@@ -17,6 +18,19 @@ import platform
 import webbrowser
 import subprocess
 import string
+
+def clear():
+    if platform.system() == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+
+clear()
+
+if sys.version_info < (3,0):
+    print('This script must be run with Python 3. Detected version:\n')
+    print(sys.version_info)
+    quit()
 
 try:
     from tkinter import *
@@ -37,11 +51,7 @@ print('Loading...')
 
 #Function Declarations. Beware, pretty long
 ################################################################################
-def clear():
-    if platform.system() == 'Windows':
-        os.system('cls')
-    else:
-        os.system('clear')
+
 
 #attempt to open file/deal with cmds.
 try:
