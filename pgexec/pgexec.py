@@ -14,9 +14,13 @@ import sys
 import os
 import time
 import platform
+import webbrowser
+import subprocess
+import string
 
 try:
     from tkinter import *
+    import tkinter as tk
 except ImportError:
     print('Missing tkinter, downloading...')
     os.system('sudo apt-get install python3-tk')
@@ -150,4 +154,34 @@ end = time.time()
 time = end - start
 print('Time:',time,'seconds')
 
-mainloop()
+url = 'http://tacolizard.github.io/HexPy/'
+
+cmdv='python3 pgexec '+args[0]+' v'
+cmd='python3 pgexec '+args[0]
+
+def OpenUrl(url):
+    webbrowser.open_new(url)
+def verb():
+    os.system(cmdv)
+    quit()
+def nverb():
+    os.system(cmd)
+    quit()
+
+menubar = Menu(master)
+submenu = Menu(menubar)
+reopnmenu = Menu(submenu)
+reopnmenu.add_command(label='Verbosity', command=verb)
+reopnmenu.add_command(label='Non-Verbosity', command=nverb)
+submenu.add_command(label='Visit Website', command=lambda aurl=url:OpenUrl(aurl))
+submenu.add_command(label='Exit',command=master.quit)
+submenu.add_cascade(label='Reopen With...', menu=reopnmenu)
+menubar.add_cascade(label='Menu', menu=submenu)
+
+master.minsize(width=200,height=150)
+master.resizable(width=FALSE,height=FALSE)
+master.wm_title(args[0])
+master.config(menu=menubar)
+
+
+master.mainloop()
