@@ -1,5 +1,5 @@
 #.pgf image example
-import math
+
 #set width of image
 w = 100
 
