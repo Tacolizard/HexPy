@@ -159,7 +159,8 @@ url = 'http://tacolizard.github.io/HexPy/'
 cmdv='python3 pgexec '+args[0]+' v'
 cmd='python3 pgexec '+args[0]
 
-
+#welcome to the land of shoddy tkinter code
+#it really sucks, but I hate using classes
 def OpenUrl(url):
     webbrowser.open_new(url)
 def verb():
